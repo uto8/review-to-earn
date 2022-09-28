@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
-import Welcome from './views/Welcome.vue';
+import HomePage from './views/HomePage.vue';
+import WelcomePage from './views/WelcomePage.vue';
 
 Vue.use(Router);
 
@@ -9,10 +9,10 @@ export default new Router({
   mode: "history",
   routes: [
     {
-      path: '/', component: Home
+      path: '/', component: HomePage
     },
     {
-      path: '/welcome', component: Welcome
+      path: '/welcome', component: WelcomePage
     }
   ]
 });
