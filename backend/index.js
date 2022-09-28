@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const userRoute = require("./routes/users.js");
 const authRoute = require("./routes/auth.js");
+const postRoute = require("./routes/posts.js");
 const PORT = 3000;
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -16,6 +17,7 @@ mongoose.connect(process.env.MONGOURL).then(()=>{
 app.use(express.json());
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/posts", postRoute);
 
 app.get("/", (req, res)=>{
   res.send("hello express");
