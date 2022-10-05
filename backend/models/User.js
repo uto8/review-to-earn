@@ -20,6 +20,22 @@ const UserSchema = new mongoose.Schema(
       min:6,
       max: 50,
     },
+    followings: {
+      type: Array,
+      default: [],
+    },
+    followers: {
+      type: Array,
+      default: [],
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    desc: {
+      type: String,
+      max: 70,
+    }
   },
   { timestamps: true }
 );
