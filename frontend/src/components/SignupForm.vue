@@ -41,6 +41,7 @@
             }
           )
           console.log({ res })
+          this.$router.push('/')
           return res
         } catch(err) {
           console.log(err);

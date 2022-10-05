@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <div class="container welcome">
-      <p>ようこそ！</p>
       <div>
         <v-row no-gutters>
           <v-col
@@ -13,11 +12,11 @@
             sm="4"
           >
             <div v-if="shouldShowLoginForm">
-              <LoginForm />
+              <LoginForm/>
               <p class="change-form">初めての方は<span @click="shouldShowLoginForm = false">こちら</span>をクリック</p>
             </div>
             <div v-if="!shouldShowLoginForm">
-              <SignupForm />
+              <SignupForm/>
               <p class="change-form">アカウントをお持ちの方は<span @click="shouldShowLoginForm = true">こちら</span>をクリック</p>
             </div>
           </v-col>
@@ -44,6 +43,11 @@
     data () {
       return {
         shouldShowLoginForm: true
+      }
+    },
+    methods: {
+      redirectToHome () {
+        this.$router.push({ name: 'HomePage' })
       }
     }
   }
