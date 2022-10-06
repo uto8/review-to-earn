@@ -3,7 +3,7 @@
     <h2 class="mb-4">ログイン</h2>
     <v-form>
       <label for="email">メールアドレス</label>
-      <v-text-field type="email" required label="メールアドレス" v-show-password-input v-model="email" />
+      <v-text-field type="email" required label="メールアドレス" v-model="email" />
       <label for="password">パスワード</label>
       <v-text-field type="password" required label="パスワード" v-model="password" />
       <div class="text-center">
@@ -40,8 +40,14 @@ export default {
         if(!res) {
           throw new Error('メールアドレスが違います')
         }
+        if (!this.error) {
+          window.localStorage.setItem('access-token', res.headers['access-token'])
+          window.localStorage.setItem('client', res.headers.client)
+          window.localStorage.setItem('uid', res.headers.uid)
+          window.localStorage.setItem('name', res.data.data.name)
+          this.$router.push('/')
+        }
         console.log({res})
-        this.$router.push('/')
         return res
       } catch(error) {
         console.log(error)
