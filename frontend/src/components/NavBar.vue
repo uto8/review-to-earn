@@ -44,19 +44,17 @@
           </v-list-item-icon>
           <v-list-item-title>Message</v-list-item-title>
         </v-list-item>
-        <v-btn
-            color="primary"
-            elevation="1"
-            rounded
-          >
-          Tweet
-        </v-btn>
+        <PostModal/>
       </v-list>
     </v-navigation-drawer>
   </v-card>
 </template>
 <script>
+  import PostModal from "./PostModal.vue";
   export default {
+    components: {
+      PostModal,
+    },
     data () {
       return {
         name: window.localStorage.getItem('name'),

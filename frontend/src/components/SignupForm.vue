@@ -34,14 +34,21 @@
     methods: {
       async signUp() {
         try{
+          this.error = null
           const res = await axios.post('http://localhost:3000/api/auth/register', {
             username: this.username,
             email: this.email,
             password: this.password
             }
           )
+          if (!this.error) {
+            window.localStorage.setItem('access-token', res.headers['access-token'])
+            window.localStorage.setItem('client', res.headers.client)
+            window.localStorage.setItem('uid', res.headers.uid)
+            window.localStorage.setItem('name', res.data.data.name)
+            this.$router.push('/')
+          }
           console.log({ res })
-          this.$router.push('/')
           return res
         } catch(err) {
           console.log(err);
