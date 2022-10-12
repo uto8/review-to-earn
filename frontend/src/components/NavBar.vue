@@ -44,24 +44,48 @@
           </v-list-item-icon>
           <v-list-item-title>Message</v-list-item-title>
         </v-list-item>
-        <v-btn
-            color="primary"
-            elevation="1"
-            rounded
-          >
-          Tweet
-        </v-btn>
+        <PostModal/>
+        <button @click="logout">ログアウト</button>
       </v-list>
     </v-navigation-drawer>
   </v-card>
 </template>
 <script>
+  import axios from 'axios'
+  import PostModal from "./PostModal.vue";
   export default {
+    components: {
+      PostModal,
+    },
     data () {
       return {
         name: window.localStorage.getItem('name'),
         email: window.localStorage.getItem('uid')
       }
+    },
+    methods: {
+
+    async logout () {
+      try {
+        const res = await axios.delete('http://localhost:3000/api/auth/logout', {
+          headers: {
+            uid: this.email,
+            "access-token": window.localStorage.getItem('access-token'),
+            client: window.localStorage.getItem('client')
+          }
+        })
+
+        console.log("ログアウトしました")
+        window.localStorage.removeItem('access-token')
+        window.localStorage.removeItem('client')
+        window.localStorage.removeItem('uid')
+        window.localStorage.removeItem('name')
+
+        return res
+      } catch (error) {
+        console.log({ error })
+      }
+    }
     }
   }
 </script>
