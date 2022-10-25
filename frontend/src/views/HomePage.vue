@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <NavBar/>
-    <!-- <div class="container">
+    <div class="container">
       <router-link to="/welcome">ログイン</router-link>
-    </div> -->
+    </div>
   </v-app>
 </template>
 <script>
