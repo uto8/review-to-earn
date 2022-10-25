@@ -4,10 +4,10 @@
       <v-list-item class="nav-user">
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            {{name}}
+            <router-link to="/users/1">{{name}}</router-link>
           </v-list-item-title>
           <v-list-item-subtitle>
-            {{email}}
+            <router-link to="/users">{{email}}</router-link>
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
