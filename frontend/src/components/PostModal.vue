@@ -48,7 +48,8 @@
             }
           )
           console.log({ res })
-          // this.$router.push('/')
+          const id = res.data._id
+          this.$router.push(`/posts/${id}`)
           return res
         } catch (err) {
           console.log(err);

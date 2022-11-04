@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <div class="navbar">
     <v-navigation-drawer permanent width="100%">
       <v-list-item class="nav-user">
         <v-list-item-content>
@@ -18,7 +18,7 @@
         dense
         nav
       >
-      <v-list-item link>
+      <v-list-item link to="/">
           <v-list-item-icon>
             <v-icon>fa-home</v-icon>
           </v-list-item-icon>
@@ -44,11 +44,19 @@
           </v-list-item-icon>
           <v-list-item-title>Message</v-list-item-title>
         </v-list-item>
+        <v-list-item link to="/users/1">
+          <v-list-item-icon>
+            <v-icon>
+              fa fa-user
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Account</v-list-item-title>
+        </v-list-item>
         <PostModal/>
         <button @click="logout">ログアウト</button>
       </v-list>
     </v-navigation-drawer>
-  </v-card>
+  </div>
 </template>
 <script>
   import axios from 'axios'
@@ -90,12 +98,12 @@
   }
 </script>
 <style scoped>
-  .v-card{
+  .navbar{
     height:100vh;
-    width:400px;
+    width:20%;
   }
   @media(max-width:600px){
-    .v-card{
+    .navbar{
       height:auto;
       width:100%;
       position:fixed;
